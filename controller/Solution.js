@@ -12,8 +12,8 @@
  * Param: url {String} - the url for the get request
  * Returns: {Boolean} - The result of the get request, successful or not
  * 
- * Private 
- * _constructHeap: for each valid, distinct value from the _data property, add it to the heap
+ *  
+ * constructHeap: for each valid, distinct value from the _data property, add it to the heap
  * Returns: {Boolean} - The constructions was success status
  * 
  * retrieveKLowestNums: - pops the k smallest integers from the minHeap, and sets them in the smallest property
@@ -27,35 +27,35 @@
 
 
 const { get } = require('axios');
-const { minHeap } = require('datastructures-js');
+const { MinHeap } = require('datastructures-js');
 
 
 module.exports = class Solution {
     constructor () {
         this._data = [];
-        this._minHeap = new minHeap();
+        this._minHeap = new MinHeap();
         this._smallest = [];
     }
 
-    retrieveData(url) {
-        get(url) // request the info
-        .then(data => JSON.parse(data)) //parse from json back to original values
+    async retrieveData(url) {
+        return await get(url) // request the info
+        .then(res => res.data) //parse from json back to original values
+        .then(data => data.split('\n'))
         .then(data => {
-            //save for later
             this._data = data;
             //save is successful so return true
             return true;
         })
         .catch(error => {
             //something happened with the request or with processing
-            console.log(error);
+            console.log(`Error: ${error}`);
             //operation failed
             return false;
         })
     }
 
 
-    _constructHeap() {
+    constructHeap() {
         //check for data
         if (this._data.length) {
             //create a set for checking uniqueness
@@ -64,7 +64,7 @@ module.exports = class Solution {
             this._data.forEach(val => {
                 if (!isNaN(val - '0') && !set.has(val - '0')) {
                    //if it's valid, and unique add it to the heap and the set
-                    this._minHeap.push(val - '0');
+                    this._minHeap.insert(val - '0');
                     set.add(val - '0');
                 }
             })
@@ -80,7 +80,7 @@ module.exports = class Solution {
         this._smallest = [];
         k = this._minHeap.size() < k ? this._minHeap.size() : k;
         for (let i = 0; i < k; i++) {
-            this._smallest.push(this._minHeap.extractRoot());
+            this._smallest.push(this._minHeap.extractRoot().getKey());
         }
 
         return this._smallest;

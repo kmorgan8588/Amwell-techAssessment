@@ -21,5 +21,5 @@ Invoke the Solution.retrieveKLowestNums, with a specified k value of type int  (
   ## To run
   * Fork/Clone this repo
   * npm install to retrieve dependencies
-  * npm run to execute with default params
+  * npm start to execute with default params
   * npm test to run small test suite
