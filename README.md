@@ -13,7 +13,8 @@ https://www.iwillfearnoevil.com/screen/string.txt
 Interface:
 
 Invoke an instance of the Solution class.
-Inkoke the Solution.retrieveData method, with the required url to populate the class
+Invoke the Solution.retrieveData method, with the required url to populate the class
+Invoke the Solution.constructHeap method to sort and split data
 Invoke the Solution.retrieveKLowestNums, with a specified k value of type int  (defaults to 3)
   Returns the k distinct lowest integers from the data field.
   
