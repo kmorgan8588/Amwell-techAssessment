@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/kmorgan8588/Amwell-techAssessment/issues"
   },
-  "homepage": "https://github.com/kmorgan8588/Amwell-techAssessment#readme"
+  "homepage": "https://github.com/kmorgan8588/Amwell-techAssessment#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "datastructures-js": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^25.5.3"
+  }
 }
